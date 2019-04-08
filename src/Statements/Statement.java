@@ -2,6 +2,6 @@ package Statements;
 
 public interface Statement {
 
-    void execute();
+    void execute() throws Exception;
 
 }

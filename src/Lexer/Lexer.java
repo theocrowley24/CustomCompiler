@@ -1,5 +1,6 @@
 package Lexer;
 
+import Enums.Type;
 import Tokens.*;
 
 import java.io.IOException;
@@ -70,14 +71,24 @@ public class Lexer {
             return new OpenBracketToken();
         } else if (word.equals(")")) {
             return new CloseBracketToken();
+        } else if (word.equals("Number")) {
+            return new TypeToken(Type.NUMBER);
+        } else if (word.equals("Boolean")) {
+            return new TypeToken(Type.BOOLEAN);
+        } else if (word.equals("String")) {
+            return new TypeToken(Type.STRING);
+        } else if (word.matches("\\w+")) {
+            return new VariableToken(word);
+        } else if (word.equals("=")) {
+            return new EqualsToken();
         }
         return null;
     }
 
     public void run() {
         String file = readFile();
-
-        //file = file.replaceAll("\\s+(?=([^\"]*\"[^\"]*\")*[^\"]*$)","");
+        file = file.replaceAll("(\\r|\\n)", "");
+        file += ";";
 
         StringBuilder word = new StringBuilder();
         for (int i = 0; i < file.length(); i++) {
@@ -90,6 +101,11 @@ public class Lexer {
                 }
 
                 if (Character.isWhitespace(file.charAt(i))) {
+                    i++;
+                }
+
+                if (file.charAt(i) ==';') {
+                    tokens.add(new TerminationToken());
                     i++;
                 }
             }

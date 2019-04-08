@@ -14,11 +14,6 @@ public class NumberExpression extends Expression {
     }
 
     @Override
-    public ExpressionType getType() {
-        return type;
-    }
-
-    @Override
     public GeneralSymbol evaluate() {
         return new NumberGeneralSymbol(value);
     }

@@ -3,6 +3,8 @@ package Expressions;
 import Expressions.Enums.ExpressionType;
 import Symbols.GeneralSymbol;
 
+import java.util.HashMap;
+
 public abstract class Expression {
 
     protected ExpressionType type;
@@ -11,7 +13,9 @@ public abstract class Expression {
         this.type = type;
     }
 
-    public abstract ExpressionType getType();
+    public ExpressionType getType() {
+        return type;
+    }
 
     public abstract GeneralSymbol evaluate();
 }
