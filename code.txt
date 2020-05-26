@@ -1,5 +1,5 @@
 Number x = 1;
-OUT x;
+OUT x + 9;
 String myString = "Hello_world!";
 OUT myString;
 Number x = 5;

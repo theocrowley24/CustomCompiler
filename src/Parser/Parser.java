@@ -4,7 +4,7 @@ import Expressions.*;
 import Expressions.BinaryExpressions.*;
 import Statements.OutStatement;
 import Statements.Statement;
-import Statements.VariableDeclerationStatement;
+import Statements.VariableDeclarationStatement;
 import Symbols.GeneralSymbol;
 import Tokens.*;
 import Tokens.Enums.TokenType;
@@ -113,7 +113,7 @@ public class Parser {
         if (statementTokens.get(0).getType() == TokenType.PRINT) {
             return new OutStatement(parseExpression(statementTokens.subList(1, statementTokens.size()), null));
         } else if (statementTokens.get(0).getType() == TokenType.TYPE && statementTokens.get(1).getType() == TokenType.VARIABLE && statementTokens.get(2).getType() == TokenType.EQUALS) {
-            return new VariableDeclerationStatement(parseExpression(statementTokens.subList(3, statementTokens.size()), null),  ((VariableToken) statementTokens.get(1)).getName());
+            return new VariableDeclarationStatement(parseExpression(statementTokens.subList(3, statementTokens.size()), null),  ((VariableToken) statementTokens.get(1)).getName());
         }
 
         return null;

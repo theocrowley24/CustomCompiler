@@ -6,18 +6,18 @@ import Symbols.GlobalSymbolTable;
 
 import java.util.HashMap;
 
-public class VariableDeclerationStatement implements Statement {
+public class VariableDeclarationStatement implements Statement {
 
     private HashMap<String, GeneralSymbol> localSymbolTable;
     private Expression expression;
     private String name;
 
-    public VariableDeclerationStatement(Expression expression, String name) {
+    public VariableDeclarationStatement(Expression expression, String name) {
         this.expression = expression;
         this.name = name;
     }
 
-    public VariableDeclerationStatement setSymbolTable(HashMap<String, GeneralSymbol> localSymbolTable) {
+    public VariableDeclarationStatement setSymbolTable(HashMap<String, GeneralSymbol> localSymbolTable) {
         this.localSymbolTable = localSymbolTable;
         return this;
     }
